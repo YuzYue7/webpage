@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>标语切换页面</title>
+    <title>互动标语页面</title>
     <style>
         body, html {
             height: 100%;
@@ -14,15 +14,13 @@
             flex-direction: column;
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
+            text-align: center;
         }
-
         #slogan {
             font-size: 2em;
             margin-bottom: 20px;
-            text-align: center;
         }
-
-        #change-btn {
+        #action-btn {
             padding: 10px 20px;
             font-size: 1em;
             cursor: pointer;
@@ -32,22 +30,45 @@
             border-radius: 5px;
             transition: background-color 0.3s;
         }
-
-        #change-btn:hover {
+        #action-btn:hover {
             background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div id="slogan">邵帆，大猪妞</div>
-    <button id="change-btn">点击我</button>
+    <div id="slogan">欢迎！</div>
+    <button id="action-btn">开始</button>
 
     <script>
         const slogan = document.getElementById('slogan');
-        const button = document.getElementById('change-btn');
+        const btn = document.getElementById('action-btn');
 
-        button.addEventListener('click', () => {
-            slogan.textContent = "伟大的邵帆父亲-郭冀康所留";
+        let userName = "";
+        let stage = 0; // 0: 输入名字, 1: 显示大猪妞, 2: 显示伟大的邵帆留
+
+        function resetPage() {
+            stage = 0;
+            slogan.textContent = "欢迎！";
+            btn.textContent = "开始";
+        }
+
+        btn.addEventListener('click', () => {
+            if (stage === 0) {
+                userName = prompt("请输入你的名字：");
+                if (!userName) {
+                    alert("名字不能为空！");
+                    return;
+                }
+                slogan.textContent = `${userName} 是大猪妞`;
+                btn.textContent = "下一步";
+                stage = 1;
+            } else if (stage === 1) {
+                slogan.textContent = "伟大的邵帆留";
+                btn.textContent = "回到最初页面";
+                stage = 2;
+            } else if (stage === 2) {
+                resetPage();
+            }
         });
     </script>
 </body>
