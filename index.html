@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标语切换页面</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        #slogan {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #change-btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #change-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="slogan">邵帆，大猪妞</div>
+    <button id="change-btn">点击我</button>
+
+    <script>
+        const slogan = document.getElementById('slogan');
+        const button = document.getElementById('change-btn');
+
+        button.addEventListener('click', () => {
+            slogan.textContent = "伟大的邵帆父亲-郭冀康所留";
+        });
+    </script>
+</body>
+</html>
